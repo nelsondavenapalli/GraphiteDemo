@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id 'io.franzbecker.gradle-lombok' version '1.11'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'fun.abm'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile  "io.dropwizard.metrics:metrics-core:3.2.6",
+			 "io.dropwizard.metrics:metrics-jvm:3.2.6",
+			 "io.dropwizard.metrics:metrics-graphite:3.2.6",
+			 "org.apache.commons:commons-lang3:3.4"
+
+	compileOnly 'org.projectlombok:lombok:1.18.2'
+
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
